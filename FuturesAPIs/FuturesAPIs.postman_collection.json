@@ -1225,44 +1225,6 @@
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "Get wallet balance info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/private/wallet/balance?timestamp={{timestamp}}&coin=USDT&api_key={{bybit-api-key}}&sign={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"private",
-								"wallet",
-								"balance"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "coin",
-									"value": "USDT"
-								},
-								{
-									"key": "api_key",
-									"value": "{{bybit-api-key}}"
-								},
-								{
-									"key": "sign",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
