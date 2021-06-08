@@ -4,7 +4,7 @@
 
 ## How to import Collections
 
-- Download the Collections from https://github.com/bybit-exchange/QuickStartWithPostman (Taking FuturesAPIs/FuturesAPIs.postman_collection.json as an example going forward)
+- Download the Collections ("git clone" is recommended) from https://github.com/bybit-exchange/QuickStartWithPostman (Taking FuturesAPIs/FuturesAPIs.postman_collection.json as an example going forward)
 - Import the Collections into the Postman app.
 
 <p align="center"><img src="https://github.com/bybit-exchange/QuickStartWithPostman/blob/main/ImportCollection.png" /></p>
