@@ -17,6 +17,6 @@
 
 <p align="center"><img src="https://github.com/bybit-exchange/QuickStartWithPostman/blob/main/ImportEnvironment.png" /></p>
 
-- Update api key and secret accordingly (If you mean test in mainnet, update URL to https://api.bybit.com)
+- Update api key and secret accordingly (If you mean to test in mainnet, update URL to https://api.bybit.com)
 
 <p align="center"><img src="https://github.com/bybit-exchange/QuickStartWithPostman/blob/main/ConfigEnv.png" /></p>
