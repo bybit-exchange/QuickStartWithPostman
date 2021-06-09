@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "5dea1b20-116e-4d29-8cb7-b0285b68606d",
+		"name": "Spot APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Spot Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"if(jsonData.result.order_id){",
+							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
+							"}",
+							"else{",
+							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
+							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
+							"    postman.setNextRequest(\"Transfer USDT From U-Futures to Spot\")",
+							"}",
+							"pm.test(\"Order placing returns true\", () => {",
+							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"});",
+							"setTimeout(()=>{},5000)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/order?symbol=BTCUSDT&qty=0.004&price=30000&side=Buy&type=LIMIT&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSDT"
+						},
+						{
+							"key": "qty",
+							"value": "0.004"
+						},
+						{
+							"key": "price",
+							"value": "30000"
+						},
+						{
+							"key": "side",
+							"value": "Buy"
+						},
+						{
+							"key": "type",
+							"value": "LIMIT"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "time_in_force",
+							"value": "GoodTillCancel"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Spot Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"if(jsonData.result.order_id){",
+							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
+							"}",
+							"else{",
+							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
+							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
+							"    postman.setNextRequest(\"Transfer USDT From U-Futures to Spot\")",
+							"}",
+							"pm.test(\"Order placing returns true\", () => {",
+							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"});",
+							"setTimeout(()=>{},5000)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/order?orderId=909941063100172288&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "909941063100172288"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Spot Wallet Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/account?timestamp={{timestamp}}&coin=BTC&api_key={{bybit-api-key}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"account"
+					],
+					"query": [
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "coin",
+							"value": "BTC"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const ts  = Date.now();",
+					"pm.environment.set(\"timestamp\", ts);",
+					"",
+					"let paramsObject = {};",
+					"",
+					"const bybit_api_secret = pm.environment.get(\"bybit-api-secret\");",
+					"",
+					"const parameters = pm.request.url.query;",
+					"console.log(\"start\");",
+					"console.log(parameters);",
+					"",
+					"parameters.map((param) => {",
+					"    if (param.key != 'sign' && ",
+					"        //param.key != 'timestamp' && ",
+					"        !is_empty(param.value) &&",
+					"        !is_disabled(param.disabled)) {",
+					"            if(param.key=='timestamp'){",
+					"                paramsObject[param.key] = ts;",
+					"            }",
+					"            else if(param.key=='api_key'){",
+					"                paramsObject[param.key] = pm.environment.get(\"bybit-api-key\");",
+					"            }",
+					"            else{",
+					"                paramsObject[param.key] = param.value;",
+					"            }",
+					"            //console.log(encodeURIComponent(param.value));",
+					"            //pm.environment.set(param.key, encodeURIComponent(param.value));",
+					"    }",
+					"})",
+					"        ",
+					"//Object.assign(paramsObject, {'timestamp': ts});",
+					"",
+					"if (bybit_api_secret) {",
+					"    const queryString = Object.keys(paramsObject).sort().map((key) => {",
+					"        return `${key}=${paramsObject[key]}`;",
+					"    }).join('&');",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}",
+					"",
+					"",
+					"function is_disabled(str) {",
+					"    return str == true;",
+					"}",
+					"",
+					"function is_empty(str) {",
+					"    if (typeof str == 'undefined' ||",
+					"        !str || ",
+					"        str.length === 0 || ",
+					"        str === \"\" ||",
+					"        !/[^\\s]/.test(str) ||",
+					"        /^\\s*$/.test(str) ||",
+					"        str.replace(/\\s/g,\"\") === \"\")",
+					"    {",
+					"        return true;",
+					"    }",
+					"    else",
+					"    {",
+					"        return false;",
+					"    }",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
