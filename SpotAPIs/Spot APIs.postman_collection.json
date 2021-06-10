@@ -12,19 +12,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"if(jsonData.result.order_id){",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
-							"}",
-							"else{",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
-							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
-							"    postman.setNextRequest(\"Transfer USDT From U-Futures to Spot\")",
-							"}",
-							"pm.test(\"Order placing returns true\", () => {",
-							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
-							"});",
-							"setTimeout(()=>{},5000)"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -34,7 +22,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/spot/v1/order?symbol=BTCUSDT&qty=0.004&price=30000&side=Buy&type=LIMIT&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/spot/v1/order?symbol=BTCUSDT&qty=0.0003&price=28000&side=Buy&type=LIMIT&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -50,11 +38,11 @@
 						},
 						{
 							"key": "qty",
-							"value": "0.004"
+							"value": "0.0003"
 						},
 						{
 							"key": "price",
-							"value": "30000"
+							"value": "28000"
 						},
 						{
 							"key": "side",
@@ -92,19 +80,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"if(jsonData.result.order_id){",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
-							"}",
-							"else{",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
-							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
-							"    postman.setNextRequest(\"Transfer USDT From U-Futures to Spot\")",
-							"}",
-							"pm.test(\"Order placing returns true\", () => {",
-							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
-							"});",
-							"setTimeout(()=>{},5000)"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -127,6 +103,272 @@
 						{
 							"key": "orderId",
 							"value": "909941063100172288"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Spot Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/order?symbol=BTCUSDT&orderId=910634943781147904&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSDT"
+						},
+						{
+							"key": "orderId",
+							"value": "910634943781147904"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Batch cancel spot orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/order/batch-cancel?symbol=BTCUSDT&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"order",
+						"batch-cancel"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSDT"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Open orders list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/order?orderId=909941063100172288&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "909941063100172288"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Past Orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/history-orders?orderId=910663299415282944&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"history-orders"
+					],
+					"query": [
+						{
+							"key": "orderType",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "symbol",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "orderId",
+							"value": "910663299415282944"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trade History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"if(jsonData.result.order_id){",
+							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
+							"}",
+							"else{",
+							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
+							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
+							"    postman.setNextRequest(\"Transfer USDT From U-Futures to Spot\")",
+							"}",
+							"pm.test(\"Order placing returns true\", () => {",
+							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"});",
+							"setTimeout(()=>{},5000)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/myTrades?symbol=BTCUSDT&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"myTrades"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSDT"
 						},
 						{
 							"key": "api_key",
