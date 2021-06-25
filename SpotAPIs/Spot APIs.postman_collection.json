@@ -22,7 +22,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/spot/v1/order?symbol=BTCUSDT&qty=0.0003&price=28000&side=Buy&type=LIMIT&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/spot/v1/order?symbol=ETHUSDT&qty=1&price=30&side=Buy&type=Limit&api_key={{bybit-api-key}}&recv_window=5000000&time_in_force=GTC&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -34,15 +34,15 @@
 					"query": [
 						{
 							"key": "symbol",
-							"value": "BTCUSDT"
+							"value": "ETHUSDT"
 						},
 						{
 							"key": "qty",
-							"value": "0.0003"
+							"value": "1"
 						},
 						{
 							"key": "price",
-							"value": "28000"
+							"value": "30"
 						},
 						{
 							"key": "side",
@@ -50,15 +50,19 @@
 						},
 						{
 							"key": "type",
-							"value": "LIMIT"
+							"value": "Limit"
 						},
 						{
 							"key": "api_key",
 							"value": "{{bybit-api-key}}"
 						},
 						{
+							"key": "recv_window",
+							"value": "5000000"
+						},
+						{
 							"key": "time_in_force",
-							"value": "GoodTillCancel"
+							"value": "GTC"
 						},
 						{
 							"key": "timestamp",
@@ -90,7 +94,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/spot/v1/order?orderId=909941063100172288&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/spot/v1/order?orderId=921564690019061760&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -101,8 +105,13 @@
 					],
 					"query": [
 						{
+							"key": "symbol",
+							"value": "ETHUSDT",
+							"disabled": true
+						},
+						{
 							"key": "orderId",
-							"value": "909941063100172288"
+							"value": "921564690019061760"
 						},
 						{
 							"key": "api_key",
@@ -190,7 +199,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/spot/order/batch-cancel?symbol=BTCUSDT&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/spot/order/batch-cancel?symbol=ETHUSDT&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -202,7 +211,7 @@
 					"query": [
 						{
 							"key": "symbol",
-							"value": "BTCUSDT"
+							"value": "ETHUSDT"
 						},
 						{
 							"key": "api_key",
@@ -238,19 +247,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/spot/v1/order?orderId=909941063100172288&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/spot/v1/open-orders?api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"spot",
 						"v1",
-						"order"
+						"open-orders"
 					],
 					"query": [
 						{
 							"key": "orderId",
-							"value": "909941063100172288"
+							"value": "909941063100172288",
+							"disabled": true
 						},
 						{
 							"key": "api_key",
@@ -334,19 +344,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"if(jsonData.result.order_id){",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
-							"}",
-							"else{",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
-							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
-							"    postman.setNextRequest(\"Transfer USDT From U-Futures to Spot\")",
-							"}",
-							"pm.test(\"Order placing returns true\", () => {",
-							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
-							"});",
-							"setTimeout(()=>{},5000)"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -391,9 +389,15 @@
 			"name": "Spot Wallet Balance",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "{{url}}/spot/v1/account?timestamp={{timestamp}}&coin=BTC&api_key={{bybit-api-key}}&sign={{signature}}",
+					"raw": "{{url}}/spot/v1/account?timestamp={{timestamp}}&api_key={{bybit-api-key}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -404,12 +408,13 @@
 					],
 					"query": [
 						{
-							"key": "timestamp",
-							"value": "{{timestamp}}"
+							"key": "coin",
+							"value": "BTC",
+							"disabled": true
 						},
 						{
-							"key": "coin",
-							"value": "BTC"
+							"key": "timestamp",
+							"value": "{{timestamp}}"
 						},
 						{
 							"key": "api_key",

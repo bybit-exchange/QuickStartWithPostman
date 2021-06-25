@@ -1112,7 +1112,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/public/linear/risk-limit?symbol=BTCUSDT&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"raw": "{{url}}/public/linear/risk-limit?symbol=BTCUSDT",
 									"host": [
 										"{{url}}"
 									],
@@ -1125,18 +1125,6 @@
 										{
 											"key": "symbol",
 											"value": "BTCUSDT"
-										},
-										{
-											"key": "api_key",
-											"value": "{{bybit-api-key}}"
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "sign",
-											"value": "{{signature}}"
 										}
 									]
 								}
@@ -1225,44 +1213,6 @@
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "Get wallet balance info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/private/wallet/balance?timestamp={{timestamp}}&coin=USDT&api_key={{bybit-api-key}}&sign={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"private",
-								"wallet",
-								"balance"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "coin",
-									"value": "USDT"
-								},
-								{
-									"key": "api_key",
-									"value": "{{bybit-api-key}}"
-								},
-								{
-									"key": "sign",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -2304,6 +2254,79 @@
 					]
 				},
 				{
+					"name": "Risk Limit",
+					"item": [
+						{
+							"name": "Set Risk Limit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/private/position/risk-limit?symbol=BTCUSD&risk_id=2&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"private",
+										"position",
+										"risk-limit"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "risk_id",
+											"value": "2"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Risk Limit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/public/risk-limit/list?symbol=XRPUSD",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"public",
+										"risk-limit",
+										"list"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "XRPUSD"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Funding",
 					"item": [
 						{
@@ -2485,6 +2508,45 @@
 								{
 									"key": "symbol",
 									"value": "BTCUSD"
+								},
+								{
+									"key": "api_key",
+									"value": "{{bybit-api-key}}"
+								},
+								{
+									"key": "sign",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WalletDataEndpoints",
+			"item": [
+				{
+					"name": "Get Wallet Balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v2/private/wallet/balance?timestamp={{timestamp}}&api_key={{bybit-api-key}}&sign={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v2",
+								"private",
+								"wallet",
+								"balance"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
 								},
 								{
 									"key": "api_key",
