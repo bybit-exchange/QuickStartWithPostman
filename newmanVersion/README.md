@@ -8,3 +8,7 @@
 - register an account in testnet.bybit.com and generate your own api key/secret
 - edit BybitTestnet.postman_environment.json and change the values for bybit-api-key and bybit-api-secret accordingly
 - run step 3 in "Quick run using newman" again
+
+## How to use runNewManAsLib.js
+- npm install new (install newman module locally to import it quickly)
+- node runNewManAsLib.js
