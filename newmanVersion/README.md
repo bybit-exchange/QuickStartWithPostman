@@ -17,6 +17,3 @@
 
 - install node & npm to your computer
 - npm install -g newman
-- newman run Bybit\ USDT_Perp\ for\ Newman.postman_collection.json -e Bybit.postman_environment.json
-
-
