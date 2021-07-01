@@ -10,5 +10,5 @@
 - run step 3 in "Quick run using newman" again
 
 ## How to use runNewManAsLib.js
-- npm install new (install newman module locally to import it quickly)
+- npm install newman (install newman module locally to import it quickly)
 - node runNewManAsLib.js
