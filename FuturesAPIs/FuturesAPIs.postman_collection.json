@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "c32b62be-c04b-4e25-be3a-004da5023a45",
+		"_postman_id": "51e9ebd1-c4dc-489d-8a03-3a4584128315",
 		"name": "FuturesAPIs",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -1112,7 +1112,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/public/linear/risk-limit?symbol=BTCUSDT",
+									"raw": "{{url}}/public/linear/risk-limit?symbol=BTCUSDT&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -1125,6 +1125,18 @@
 										{
 											"key": "symbol",
 											"value": "BTCUSDT"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
 										}
 									]
 								}
@@ -2042,7 +2054,6 @@
 										"{{url}}"
 									],
 									"path": [
-										"",
 										"v2",
 										"private",
 										"execution",
@@ -2254,79 +2265,6 @@
 					]
 				},
 				{
-					"name": "Risk Limit",
-					"item": [
-						{
-							"name": "Set Risk Limit",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/private/position/risk-limit?symbol=BTCUSD&risk_id=2&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"private",
-										"position",
-										"risk-limit"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": "BTCUSD"
-										},
-										{
-											"key": "risk_id",
-											"value": "2"
-										},
-										{
-											"key": "api_key",
-											"value": "{{bybit-api-key}}"
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "sign",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Risk Limit",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/v2/public/risk-limit/list?symbol=XRPUSD",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"v2",
-										"public",
-										"risk-limit",
-										"list"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": "XRPUSD"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Funding",
 					"item": [
 						{
@@ -2444,122 +2382,1213 @@
 							"response": []
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "General",
-			"item": [
-				{
-					"name": "Get api key info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/private/account/api-key?timestamp={{timestamp}}&api_key={{bybit-api-key}}&sign={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"private",
-								"account",
-								"api-key"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "api_key",
-									"value": "{{bybit-api-key}}"
-								},
-								{
-									"key": "sign",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
 				},
 				{
-					"name": "LCP Info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/private/account/lcp?timestamp={{timestamp}}&symbol=BTCUSD&api_key={{bybit-api-key}}&sign={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"private",
-								"account",
-								"lcp"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "symbol",
-									"value": "BTCUSD"
-								},
-								{
-									"key": "api_key",
-									"value": "{{bybit-api-key}}"
-								},
-								{
-									"key": "sign",
-									"value": "{{signature}}"
+					"name": "Risk limit",
+					"item": [
+						{
+							"name": "Get Risk Limit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/public/risk-limit/list?symbol=BTCUSD&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"public",
+										"risk-limit",
+										"list"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
 								}
-							]
+							},
+							"response": []
+						},
+						{
+							"name": "Set Risk LImit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/private/funding/prev-funding?symbol=BTCUSD&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"private",
+										"funding",
+										"prev-funding"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
 		{
-			"name": "WalletDataEndpoints",
+			"name": "Inverse delivery Futures",
 			"item": [
 				{
-					"name": "Get Wallet Balance",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/v2/private/wallet/balance?timestamp={{timestamp}}&api_key={{bybit-api-key}}&sign={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"v2",
-								"private",
-								"wallet",
-								"balance"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "api_key",
-									"value": "{{bybit-api-key}}"
-								},
-								{
-									"key": "sign",
-									"value": "{{signature}}"
+					"name": "Active Orders",
+					"item": [
+						{
+							"name": "Place Active Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/order/create?position_idx=0&side=Buy&symbol=BTCUSDU21&order_type=Limit&qty=1&price=31000&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"order",
+										"create"
+									],
+									"query": [
+										{
+											"key": "position_idx",
+											"value": "0"
+										},
+										{
+											"key": "side",
+											"value": "Buy"
+										},
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "order_type",
+											"value": "Limit"
+										},
+										{
+											"key": "qty",
+											"value": "1"
+										},
+										{
+											"key": "price",
+											"value": "31000"
+										},
+										{
+											"key": "tp_trigger_by",
+											"value": "MarkPrice",
+											"disabled": true
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "reduce_only",
+											"value": "false",
+											"disabled": true
+										},
+										{
+											"key": "time_in_force",
+											"value": "GoodTillCancel"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
 								}
-							]
+							},
+							"response": []
+						},
+						{
+							"name": "Replace Active Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/private/order/replace?order_id=4de2bb7a-073a-4367-b378-7a76a2c85808&symbol=BTCUSD&p_r_qty=20&p_r_price=29999&take_profit=49999&stop_loss=19999&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"private",
+										"order",
+										"replace"
+									],
+									"query": [
+										{
+											"key": "order_id",
+											"value": "4de2bb7a-073a-4367-b378-7a76a2c85808"
+										},
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "p_r_qty",
+											"value": "20"
+										},
+										{
+											"key": "p_r_price",
+											"value": "29999"
+										},
+										{
+											"key": "take_profit",
+											"value": "49999"
+										},
+										{
+											"key": "stop_loss",
+											"value": "19999"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Active Order(might have delay)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/private/order/list?symbol=BTCUSD&order_id=4de2bb7a-073a-4367-b378-7a76a2c85808&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"private",
+										"order",
+										"list"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "order_id",
+											"value": "4de2bb7a-073a-4367-b378-7a76a2c85808"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Query Active Order (real-time)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/private/order?symbol=BTCUSD&order_id=4de2bb7a-073a-4367-b378-7a76a2c85808&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"private",
+										"order"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "order_id",
+											"value": "4de2bb7a-073a-4367-b378-7a76a2c85808"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel Active Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/order/cancel?symbol=BTCUSDU21&order_id=e4d7727e-e589-4570-ac33-f5a99d29de99&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"order",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "order_id",
+											"value": "e4d7727e-e589-4570-ac33-f5a99d29de99"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel All Active Orders",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/order/cancelAll?symbol=BTCUSDU21&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"order",
+										"cancelAll"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Conditional Orders",
+					"item": [
+						{
+							"name": "Place Conditional Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/stop-order/create?side=Buy&symbol=BTCUSD&order_type=Limit&qty=10&price=31000&base_price=30000&stop_px=40000&trigger_by=MarkPrice&take_profit=50000&stop_loss=20000&api_key={{bybit-api-key}}&reduce_only=false&close_on_trigger=false&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}&position_idx=0",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"stop-order",
+										"create"
+									],
+									"query": [
+										{
+											"key": "side",
+											"value": "Buy"
+										},
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "order_type",
+											"value": "Limit"
+										},
+										{
+											"key": "qty",
+											"value": "10"
+										},
+										{
+											"key": "price",
+											"value": "31000"
+										},
+										{
+											"key": "base_price",
+											"value": "30000"
+										},
+										{
+											"key": "stop_px",
+											"value": "40000"
+										},
+										{
+											"key": "trigger_by",
+											"value": "MarkPrice"
+										},
+										{
+											"key": "take_profit",
+											"value": "50000"
+										},
+										{
+											"key": "stop_loss",
+											"value": "20000"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "reduce_only",
+											"value": "false"
+										},
+										{
+											"key": "close_on_trigger",
+											"value": "false"
+										},
+										{
+											"key": "time_in_force",
+											"value": "GoodTillCancel"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										},
+										{
+											"key": "position_idx",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Replace Conditional Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/private/stop-order/replace?stop_order_id=cb1a668f-5e96-4fb0-8b5b-7d8c5265894b&symbol=BTCUSD&p_r_qty=25&p_r_price=29999&take_profit=49999&stop_loss=19999&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"private",
+										"stop-order",
+										"replace"
+									],
+									"query": [
+										{
+											"key": "stop_order_id",
+											"value": "cb1a668f-5e96-4fb0-8b5b-7d8c5265894b"
+										},
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "p_r_qty",
+											"value": "25"
+										},
+										{
+											"key": "p_r_price",
+											"value": "29999"
+										},
+										{
+											"key": "take_profit",
+											"value": "49999"
+										},
+										{
+											"key": "stop_loss",
+											"value": "19999"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Conditional Order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/stop-order/list?symbol=BTCUSDU21&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"stop-order",
+										"list"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Query Conditional Order (real-time)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/stop-order?symbol=BTCUSDU21&stop_order_id=05f67375-af17-4bd3-8721-114572bfe915&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"stop-order"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "stop_order_id",
+											"value": "05f67375-af17-4bd3-8721-114572bfe915"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel Conditional Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/stop-order/cancel?symbol=BTCUSDU21&stop_order_id=05f67375-af17-4bd3-8721-114572bfe915&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"stop-order",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "stop_order_id",
+											"value": "05f67375-af17-4bd3-8721-114572bfe915"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel All Conditional Orders",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/stop-order/cancelAll?symbol=BTCUSDU21&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"stop-order",
+										"cancelAll"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Position",
+					"item": [
+						{
+							"name": "My Position",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/v2/private/position/list?symbol=BTCUSD&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"v2",
+										"private",
+										"position",
+										"list"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Margin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/position/change-position-margin?symbol=BTCUSDU21&position_idx=0&margin=0.0000076&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"position",
+										"change-position-margin"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "position_idx",
+											"value": "0"
+										},
+										{
+											"key": "margin",
+											"value": "0.0000076"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Trading-Stop",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/position/trading-stop?symbol=BTCUSDZ21&position_idx=0&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"position",
+										"trading-stop"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDZ21"
+										},
+										{
+											"key": "position_idx",
+											"value": "0"
+										},
+										{
+											"key": "take_profit",
+											"value": "40001",
+											"disabled": true
+										},
+										{
+											"key": "stop_loss",
+											"value": "20000",
+											"disabled": true
+										},
+										{
+											"key": "trailing_stop",
+											"value": "100",
+											"disabled": true
+										},
+										{
+											"key": "sl_size",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "tp_size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Leverage",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/position/leverage/save?symbol=BTCUSDU21&buy_leverage=7&sell_leverage=7&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"position",
+										"leverage",
+										"save"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "buy_leverage",
+											"value": "7"
+										},
+										{
+											"key": "sell_leverage",
+											"value": "7"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Trade Records",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/execution/list?symbol=BTCUSDU21&mode=0&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"execution",
+										"list"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "mode",
+											"value": "0"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Closed Profit and Loss",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/trade/closed-pnl/list?symbol=BTCUSDU21&exec_type=Trade&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"trade",
+										"closed-pnl",
+										"list"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "exec_type",
+											"value": "Trade"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Position Mode Switch",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/position/switch-mode?symbol=BTCUSDZ21&mode=0&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"position",
+										"switch-mode"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDZ21"
+										},
+										{
+											"key": "mode",
+											"value": "0"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Full/Partial Position SL/TP Switch",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/tpsl/switch-mode?symbol=BTCUSDZ21&tp_sl_mode=Full&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"tpsl",
+										"switch-mode"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDZ21"
+										},
+										{
+											"key": "tp_sl_mode",
+											"value": "Full"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cross/Isolated Margin Switch",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/position/switch-isolated?symbol=BTCUSD&is_isolated=true&buy_leverage=4&sell_leverage=4&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"position",
+										"switch-isolated"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSD"
+										},
+										{
+											"key": "is_isolated",
+											"value": "true"
+										},
+										{
+											"key": "buy_leverage",
+											"value": "4"
+										},
+										{
+											"key": "sell_leverage",
+											"value": "4"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Risk limit",
+					"item": [
+						{
+							"name": "Get Risk Limit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/position/risk-limit?symbol=BTCUSDU21&risk_id=1&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"position",
+										"risk-limit"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDU21"
+										},
+										{
+											"key": "risk_id",
+											"value": "1"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Risk LImit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/futures/private/position/risk-limit?symbol=BTCUSDZ21&risk_id=1&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"futures",
+										"private",
+										"position",
+										"risk-limit"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDZ21"
+										},
+										{
+											"key": "risk_id",
+											"value": "1"
+										},
+										{
+											"key": "api_key",
+											"value": "{{bybit-api-key}}"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "sign",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
