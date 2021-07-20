@@ -13,7 +13,7 @@
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"if(jsonData.result.hasOwnProperty(\"order_id\")){",
+							"if(jsonData.result && jsonData.result.hasOwnProperty(\"order_id\")){",
 							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
 							"}",
 							"else{",
@@ -101,7 +101,7 @@
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"pm.test(\"Order placing returns true\", () => {",
+							"pm.test(\"Order Query returns true\", () => {",
 							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
 							"});"
 						],
@@ -157,7 +157,7 @@
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"pm.test(\"Order placing returns true\", () => {",
+							"pm.test(\"Order Cancellation returns true\", () => {",
 							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
 							"});"
 						],
