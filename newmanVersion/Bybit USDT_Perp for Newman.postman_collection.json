@@ -13,18 +13,17 @@
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"if(jsonData.result.order_id){",
+							"if(jsonData.result.hasOwnProperty(\"order_id\")){",
 							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
 							"}",
 							"else{",
 							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
 							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
-							"    postman.setNextRequest(\"Transfer USDT From U-Futures to Spot\")",
+							"    postman.setNextRequest(null)",
 							"}",
 							"pm.test(\"Order placing returns true\", () => {",
 							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
-							"});",
-							"setTimeout(()=>{},5000)"
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -34,7 +33,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/create?side=Buy&symbol=BTCUSDT&order_type=Limit&qty=0.01&price=30000&api_key={{bybit-api-key}}&reduce_only=false&close_on_trigger=false&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/create?side=Buy&symbol=BTCUSDT&order_type=Limit&qty=0.01&price=20000&api_key={{bybit-api-key}}&reduce_only=false&close_on_trigger=false&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -63,7 +62,7 @@
 						},
 						{
 							"key": "price",
-							"value": "30000"
+							"value": "20000"
 						},
 						{
 							"key": "api_key",
@@ -114,7 +113,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/list?symbol=BTCUSDT&order_id={{U_Futures_orderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/search?symbol=BTCUSDT&order_id={{U_Futures_orderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -122,7 +121,7 @@
 						"private",
 						"linear",
 						"order",
-						"list"
+						"search"
 					],
 					"query": [
 						{
