@@ -12,18 +12,24 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"if(jsonData.result && jsonData.result.hasOwnProperty(\"order_id\")){",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result.hasOwnProperty(\"order_id\")){",
+							"        postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
+							"    }",
+							"    else{",
+							"        postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
+							"        console.log(\"U-Futures order placing failed and skip order deletion\");",
+							"        postman.setNextRequest(null);",
+							"    }",
+							"    pm.test(\"Order placing returns true\", () => {",
+							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"    });",
 							"}",
 							"else{",
-							"    postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
-							"    console.log(\"U-Futures order placing failed and skip order deletion\")",
-							"    postman.setNextRequest(null)",
-							"}",
-							"pm.test(\"Order placing returns true\", () => {",
-							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
-							"});"
+							"    console.log(\"No responseBody returned\");",
+							"    postman.setNextRequest(null);",
+							"}"
 						],
 						"type": "text/javascript"
 					}
@@ -100,10 +106,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.test(\"Order Query returns true\", () => {",
-							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
-							"});"
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    pm.test(\"Order Query returns true\", () => {",
+							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"    });",
+							"}"
 						],
 						"type": "text/javascript"
 					}
@@ -156,10 +164,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.test(\"Order Cancellation returns true\", () => {",
-							"  pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
-							"});"
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    pm.test(\"Order Cancellation returns true\", () => {",
+							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"    });",
+							"}"
 						],
 						"type": "text/javascript"
 					}
