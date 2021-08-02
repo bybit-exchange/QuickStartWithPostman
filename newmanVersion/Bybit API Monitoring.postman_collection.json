@@ -1,10 +1,211 @@
 {
 	"info": {
-		"_postman_id": "440934fb-18cf-4fda-99bb-fff02efa2be0",
-		"name": "Bybit USDT_Perp for Newman",
+		"_postman_id": "ea9b51ca-2055-4bb8-b9d7-2bb646f6b73c",
+		"name": "Bybit API Monitoring",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Post Inverse order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result.hasOwnProperty(\"order_id\")){",
+							"        postman.setEnvironmentVariable(\"OrderId\", jsonData.result.order_id);",
+							"    }",
+							"    else{",
+							"        postman.setEnvironmentVariable(\"OrderId\",\"\");",
+							"        console.log(\"Order placing failed and skip order deletion\");",
+							"        postman.setNextRequest(\"Post Linear Order\");",
+							"    }",
+							"    pm.test(\"Order placing returns true\", () => {",
+							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"    });",
+							"}",
+							"else{",
+							"    console.log(\"No responseBody returned\");",
+							"    postman.setNextRequest(\"Post Linear Order\");",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v2/private/order/create?side=Buy&symbol=BTCUSD&order_type=Limit&qty=10&price=20000&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v2",
+						"private",
+						"order",
+						"create"
+					],
+					"query": [
+						{
+							"key": "side",
+							"value": "Buy"
+						},
+						{
+							"key": "symbol",
+							"value": "BTCUSD"
+						},
+						{
+							"key": "order_type",
+							"value": "Limit"
+						},
+						{
+							"key": "qty",
+							"value": "10"
+						},
+						{
+							"key": "price",
+							"value": "20000"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "time_in_force",
+							"value": "GoodTillCancel"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Inverse order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    pm.test(\"Order Query returns true\", () => {",
+							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v2/private/order?symbol=BTCUSD&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v2",
+						"private",
+						"order"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSD"
+						},
+						{
+							"key": "order_id",
+							"value": "{{OrderId}}"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Inverse order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    pm.test(\"Order Cancellation returns true\", () => {",
+							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v2/private/order/cancel?symbol=BTCUSD&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v2",
+						"private",
+						"order",
+						"cancel"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSD"
+						},
+						{
+							"key": "order_id",
+							"value": "{{OrderId}}"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Post USDT order",
 			"event": [
@@ -15,10 +216,10 @@
 							"if(responseBody){",
 							"    var jsonData = JSON.parse(responseBody);",
 							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result.hasOwnProperty(\"order_id\")){",
-							"        postman.setEnvironmentVariable(\"U_Futures_orderId\", jsonData.result.order_id);",
+							"        postman.setEnvironmentVariable(\"OrderId\", jsonData.result.order_id);",
 							"    }",
 							"    else{",
-							"        postman.setEnvironmentVariable(\"U_Futures_orderId\",\"\");",
+							"        postman.setEnvironmentVariable(\"OrderId\",\"\");",
 							"        console.log(\"Order placing failed and skip order deletion\");",
 							"        postman.setNextRequest(null);",
 							"    }",
@@ -121,7 +322,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/search?symbol=BTCUSDT&order_id={{U_Futures_orderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/search?symbol=BTCUSDT&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -138,7 +339,7 @@
 						},
 						{
 							"key": "order_id",
-							"value": "{{U_Futures_orderId}}"
+							"value": "{{OrderId}}"
 						},
 						{
 							"key": "api_key",
@@ -179,7 +380,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/cancel?symbol=BTCUSDT&order_id={{U_Futures_orderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/cancel?symbol=BTCUSDT&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -196,7 +397,7 @@
 						},
 						{
 							"key": "order_id",
-							"value": "{{U_Futures_orderId}}"
+							"value": "{{OrderId}}"
 						},
 						{
 							"key": "api_key",
@@ -245,13 +446,11 @@
 					"                paramsObject[param.key] = pm.environment.get(\"bybit-api-key\");",
 					"            }",
 					"            else if(param.key=='order_id'){",
-					"                paramsObject[param.key] = pm.environment.get(\"U_Futures_orderId\");",
+					"                paramsObject[param.key] = pm.environment.get(\"OrderId\");",
 					"            }",
 					"            else{",
 					"                paramsObject[param.key] = param.value;",
 					"            }",
-					"            //console.log(encodeURIComponent(param.value));",
-					"            //pm.environment.set(param.key, encodeURIComponent(param.value));",
 					"    }",
 					"})",
 					"        ",
