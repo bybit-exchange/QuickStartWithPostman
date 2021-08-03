@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Post Inverse order",
+			"name": "Post Inverse Order",
 			"event": [
 				{
 					"listen": "test",
@@ -14,7 +14,7 @@
 						"exec": [
 							"if(responseBody){",
 							"    var jsonData = JSON.parse(responseBody);",
-							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result.hasOwnProperty(\"order_id\")){",
+							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result != null && jsonData.result.hasOwnProperty(\"order_id\")){",
 							"        postman.setEnvironmentVariable(\"OrderId\", jsonData.result.order_id);",
 							"    }",
 							"    else{",
@@ -23,8 +23,9 @@
 							"        postman.setNextRequest(\"Post Linear Order\");",
 							"    }",
 							"    pm.test(\"Order placing returns true\", () => {",
-							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
+							"        pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
 							"    });",
+							"    ",
 							"}",
 							"else{",
 							"    console.log(\"No responseBody returned\");",
@@ -92,7 +93,7 @@
 			"response": []
 		},
 		{
-			"name": "Query Inverse order",
+			"name": "Query Inverse Order",
 			"event": [
 				{
 					"listen": "test",
@@ -149,7 +150,7 @@
 			"response": []
 		},
 		{
-			"name": "Cancel Inverse order",
+			"name": "Cancel Inverse Order",
 			"event": [
 				{
 					"listen": "test",
@@ -207,7 +208,7 @@
 			"response": []
 		},
 		{
-			"name": "Post USDT order",
+			"name": "Post Linear Order",
 			"event": [
 				{
 					"listen": "test",
@@ -215,7 +216,7 @@
 						"exec": [
 							"if(responseBody){",
 							"    var jsonData = JSON.parse(responseBody);",
-							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result.hasOwnProperty(\"order_id\")){",
+							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result != null && jsonData.result.hasOwnProperty(\"order_id\")){",
 							"        postman.setEnvironmentVariable(\"OrderId\", jsonData.result.order_id);",
 							"    }",
 							"    else{",
@@ -301,7 +302,7 @@
 			"response": []
 		},
 		{
-			"name": "Query USDT order",
+			"name": "Query Linear Order",
 			"event": [
 				{
 					"listen": "test",
@@ -359,7 +360,7 @@
 			"response": []
 		},
 		{
-			"name": "Cancel USDT order",
+			"name": "Cancel Linear Order",
 			"event": [
 				{
 					"listen": "test",
