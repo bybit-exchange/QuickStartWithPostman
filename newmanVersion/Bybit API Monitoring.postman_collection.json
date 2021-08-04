@@ -40,7 +40,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/v2/private/order/create?side=Buy&symbol=BTCUSD&order_type=Limit&qty=10&price=20000&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/v2/private/order/create?side=Buy&symbol=BTCUSD&order_type=Limit&qty=10&price=20000&recv_window={{recvWindow}}&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -70,6 +70,10 @@
 						{
 							"key": "price",
 							"value": "20000"
+						},
+						{
+							"key": "recv_window",
+							"value": "{{recvWindow}}"
 						},
 						{
 							"key": "api_key",
@@ -114,7 +118,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/v2/private/order?symbol=BTCUSD&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/v2/private/order?symbol=BTCUSD&recv_window={{recvWindow}}&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -127,6 +131,10 @@
 						{
 							"key": "symbol",
 							"value": "BTCUSD"
+						},
+						{
+							"key": "recv_window",
+							"value": "{{recvWindow}}"
 						},
 						{
 							"key": "order_id",
@@ -171,7 +179,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/v2/private/order/cancel?symbol=BTCUSD&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/v2/private/order/cancel?symbol=BTCUSD&recv_window={{recvWindow}}&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -185,6 +193,10 @@
 						{
 							"key": "symbol",
 							"value": "BTCUSD"
+						},
+						{
+							"key": "recv_window",
+							"value": "{{recvWindow}}"
 						},
 						{
 							"key": "order_id",
@@ -241,7 +253,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/create?side=Buy&symbol=BTCUSDT&order_type=Limit&qty=0.001&price=20000&api_key={{bybit-api-key}}&reduce_only=false&close_on_trigger=false&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/create?side=Buy&symbol=BTCUSDT&order_type=Limit&qty=0.001&price=20000&api_key={{bybit-api-key}}&reduce_only=false&close_on_trigger=false&time_in_force=GoodTillCancel&recv_window={{recvWindow}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -289,6 +301,10 @@
 							"value": "GoodTillCancel"
 						},
 						{
+							"key": "recv_window",
+							"value": "{{recvWindow}}"
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -323,7 +339,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/search?symbol=BTCUSDT&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/search?symbol=BTCUSDT&recv_window={{recvWindow}}&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -337,6 +353,10 @@
 						{
 							"key": "symbol",
 							"value": "BTCUSDT"
+						},
+						{
+							"key": "recv_window",
+							"value": "{{recvWindow}}"
 						},
 						{
 							"key": "order_id",
@@ -381,7 +401,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/cancel?symbol=BTCUSDT&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/cancel?symbol=BTCUSDT&recv_window={{recvWindow}}&order_id={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -395,6 +415,10 @@
 						{
 							"key": "symbol",
 							"value": "BTCUSDT"
+						},
+						{
+							"key": "recv_window",
+							"value": "{{recvWindow}}"
 						},
 						{
 							"key": "order_id",
@@ -448,6 +472,9 @@
 					"            }",
 					"            else if(param.key=='order_id'){",
 					"                paramsObject[param.key] = pm.environment.get(\"OrderId\");",
+					"            }",
+					"            else if(param.key=='recv_window'){",
+					"                paramsObject[param.key] = pm.environment.get(\"recvWindow\");",
 					"            }",
 					"            else{",
 					"                paramsObject[param.key] = param.value;",
