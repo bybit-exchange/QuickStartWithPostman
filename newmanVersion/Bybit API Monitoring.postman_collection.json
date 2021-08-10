@@ -40,7 +40,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/v2/private/order/create?side=Buy&symbol=BTCUSD&order_type=Limit&qty=10&price=20000&recv_window={{recvWindow}}&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/v2/private/order/create?side=Buy&symbol=BTCUSD&order_type=Limit&qty=10&price=10000&recv_window={{recvWindow}}&api_key={{bybit-api-key}}&time_in_force=GoodTillCancel&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -69,7 +69,7 @@
 						},
 						{
 							"key": "price",
-							"value": "20000"
+							"value": "10000"
 						},
 						{
 							"key": "recv_window",
@@ -253,7 +253,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/private/linear/order/create?side=Buy&symbol=BTCUSDT&order_type=Limit&qty=0.001&price=20000&api_key={{bybit-api-key}}&reduce_only=false&close_on_trigger=false&time_in_force=GoodTillCancel&recv_window={{recvWindow}}&timestamp={{timestamp}}&sign={{signature}}",
+					"raw": "{{url}}/private/linear/order/create?side=Buy&symbol=BTCUSDT&order_type=Limit&qty=0.001&price=10000&api_key={{bybit-api-key}}&reduce_only=false&close_on_trigger=false&time_in_force=GoodTillCancel&recv_window={{recvWindow}}&timestamp={{timestamp}}&sign={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -282,7 +282,7 @@
 						},
 						{
 							"key": "price",
-							"value": "20000"
+							"value": "10000"
 						},
 						{
 							"key": "api_key",
@@ -440,6 +440,209 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Post Spot Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    if(jsonData.hasOwnProperty(\"result\") && jsonData.result != null && jsonData.result.hasOwnProperty(\"orderId\")){",
+							"        postman.setEnvironmentVariable(\"OrderId\", jsonData.result.orderId);",
+							"    }",
+							"    else{",
+							"        postman.setEnvironmentVariable(\"OrderId\",\"\");",
+							"        console.log(\"Order placing failed and skip order deletion\");",
+							"        postman.setNextRequest(null);",
+							"    }",
+							"    pm.test(\"Order placing returns true\", () => {",
+							"        pm.expect(jsonData.ret_code).to.eq(0);",
+							"    });",
+							"}",
+							"else{",
+							"    console.log(\"No responseBody returned\");",
+							"    postman.setNextRequest(null);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/order?symbol=BTCUSDT&qty=0.0005&price=60000&side=Sell&type=Limit&api_key={{bybit-api-key}}&recvWindow={{recvWindow}}&time_in_force=GTC&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSDT"
+						},
+						{
+							"key": "qty",
+							"value": "0.0005"
+						},
+						{
+							"key": "price",
+							"value": "60000"
+						},
+						{
+							"key": "side",
+							"value": "Sell"
+						},
+						{
+							"key": "type",
+							"value": "Limit"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "recvWindow",
+							"value": "{{recvWindow}}"
+						},
+						{
+							"key": "time_in_force",
+							"value": "GTC"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Spot Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    pm.test(\"Order Query returns true\", () => {",
+							"        pm.expect(jsonData.ret_code).to.eq(0);",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/order?recv_window={{recvWindow}}&orderId={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "recv_window",
+							"value": "{{recvWindow}}"
+						},
+						{
+							"key": "orderId",
+							"value": "{{OrderId}}"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Spot Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    pm.test(\"Order Cancellation returns true\", () => {",
+							"        pm.expect(jsonData.ret_code).to.eq(0);",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/v1/order?symbol=BTCUSDT&orderId={{OrderId}}&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"v1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSDT"
+						},
+						{
+							"key": "orderId",
+							"value": "{{OrderId}}"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -470,10 +673,10 @@
 					"            else if(param.key=='api_key'){",
 					"                paramsObject[param.key] = pm.environment.get(\"bybit-api-key\");",
 					"            }",
-					"            else if(param.key=='order_id'){",
+					"            else if(param.key=='order_id' || param.key=='orderId'){",
 					"                paramsObject[param.key] = pm.environment.get(\"OrderId\");",
 					"            }",
-					"            else if(param.key=='recv_window'){",
+					"            else if(param.key=='recv_window' || param.key=='recvWindow'){",
 					"                paramsObject[param.key] = pm.environment.get(\"recvWindow\");",
 					"            }",
 					"            else{",
