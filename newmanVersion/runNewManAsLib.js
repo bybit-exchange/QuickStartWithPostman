@@ -11,7 +11,7 @@ newman.run({
 }).on('done', function (err, summary) {
 	summary.run.executions.forEach(ele=>
 		{
-			slackHandlerInst=new slackHandler("C026YBF16PQ","xoxb-1230867706962-2255831110033-hBDsCDy9FY5bLbXhTpnTsRYW");
+			slackHandlerInst=new slackHandler("C026YBF16PQ","xxxx");
 			var queryString="";
 			ele.request.url.query.members.sort(GetSortOrder('key')).forEach(
 				ele2=>{
