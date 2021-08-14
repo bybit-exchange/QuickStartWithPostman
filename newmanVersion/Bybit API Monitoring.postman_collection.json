@@ -234,7 +234,7 @@
 							"    else{",
 							"        postman.setEnvironmentVariable(\"OrderId\",\"\");",
 							"        console.log(\"Order placing failed and skip order deletion\");",
-							"        postman.setNextRequest(null);",
+							"        postman.setNextRequest(\"Post Spot Order\");",
 							"    }",
 							"    pm.test(\"Order placing returns true\", () => {",
 							"    pm.expect(jsonData.ret_msg).to.eq(\"OK\");",
@@ -242,7 +242,7 @@
 							"}",
 							"else{",
 							"    console.log(\"No responseBody returned\");",
-							"    postman.setNextRequest(null);",
+							"    postman.setNextRequest(\"Post Spot Order\");",
 							"}"
 						],
 						"type": "text/javascript"
@@ -596,6 +596,9 @@
 						"exec": [
 							"if(responseBody){",
 							"    var jsonData = JSON.parse(responseBody);",
+							"    if(jsonData.ret_code == 0){",
+							"        postman.setNextRequest(null);//skip batch cancel",
+							"    }",
 							"    pm.test(\"Order Cancellation returns true\", () => {",
 							"        pm.expect(jsonData.ret_code).to.eq(0);",
 							"    });",
@@ -626,6 +629,59 @@
 						{
 							"key": "orderId",
 							"value": "{{OrderId}}"
+						},
+						{
+							"key": "api_key",
+							"value": "{{bybit-api-key}}"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "sign",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Spot Order Batch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(responseBody){",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    pm.test(\"Order Cancellation returns true\", () => {",
+							"        pm.expect(jsonData.ret_code).to.eq(0);",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/spot/order/batch-cancel?symbol=BTCUSDT&api_key={{bybit-api-key}}&timestamp={{timestamp}}&sign={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"spot",
+						"order",
+						"batch-cancel"
+					],
+					"query": [
+						{
+							"key": "symbol",
+							"value": "BTCUSDT"
 						},
 						{
 							"key": "api_key",
