@@ -2593,7 +2593,7 @@
 					"                paramsObject[param.key] = pm.environment.get(\"bybit-api-key\");",
 					"            }",
 					"            else{",
-					"                paramsObject[param.key] = param.value;",
+					"                paramsObject[param.key] = decodeURIComponent(param.value);",
 					"            }",
 					"            //console.log(encodeURIComponent(param.value));",
 					"            //pm.environment.set(param.key, encodeURIComponent(param.value));",
