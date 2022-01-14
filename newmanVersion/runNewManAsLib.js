@@ -16,6 +16,7 @@ newman.run({
 			)
 			queryString=queryString.substring(0, queryString.length - 1);
 			console.log(queryString);
+			console.log(ele.response.responseTime)
 		}
 	);
 	if (err || summary.error) {
