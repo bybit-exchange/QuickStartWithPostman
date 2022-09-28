@@ -1,0 +1,801 @@
+{
+	"info": {
+		"_postman_id": "45661281-79b7-496e-83ac-ecd11342c4d7",
+		"name": "Bybit CopyTrading",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1254611"
+	},
+	"item": [
+		{
+			"name": "Market",
+			"item": [
+				{
+					"name": "Leader's Symbol List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"判断接口是否通过\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.retCode).to.eql(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-length": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signed}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{api_key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/contract/v3/public/copytrading/symbol/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"public",
+								"copytrading",
+								"symbol",
+								"list"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Leader Create Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"side\":\"Sell\",\"symbol\":\"BTCUSDT\",\"orderType\":\"Market\",\"qty\":\"0.01\",\"price\":\"1\"}"
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/order/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"order",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leader's Order List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/order/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"order",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leader Cancel Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderId\": \"a4f60d8d-2957-46cb-9fff-126367e7fdc6\"}"
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/order/cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"order",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leader Close Position Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"symbol\":\"BTCUSDT\",\"parentOrderId\":\"cf252fd5-f25f-4623-9080-c60201b22575\"}"
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/order/close",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"order",
+								"close"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Position",
+			"item": [
+				{
+					"name": "Leader's Position List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/position/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"position",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leader Close Position",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"symbol\":\"BTCUSDT\",\"positionIdx\":\"2\"}"
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/position/close",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"position",
+								"close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leader Set Leverage",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"symbol\":\"BTCUSDT\",\"buyLeverage\":\"4\",\"sellLeverage\":\"4\"}"
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/position/set-leverage",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"position",
+								"set-leverage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Leader Get Wallet Balance",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/wallet/balance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"wallet",
+								"balance"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "ETH",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leader Transfer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN-TYPE",
+								"value": "2",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"transfer_id\":\"5f95de18-b10f-43be-9746-7b95c4a37d107\",\"coin\":\"USDT\",\"amount\":\"100\",\"fromAccountType\":\"CONTRACT\",\"toAccountType\":\"COPYTRADING\"}\n"
+						},
+						"url": {
+							"raw": "{{url}}/contract/v3/private/copytrading/wallet/transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contract",
+								"v3",
+								"private",
+								"copytrading",
+								"wallet",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const ts  = Date.now();",
+					"",
+					"pm.environment.set(\"timestamp\", ts);",
+					"pm.environment.set(\"recvWindow\", 5000);",
+					"let paramsObject = {};",
+					"",
+					"const bybit_api_secret = pm.environment.get(\"bybit-api-secret\");",
+					"",
+					"if (pm.request.method == \"POST\") {",
+					"    var queryString = \"\"",
+					"    queryString=ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.body.raw;",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}",
+					"else{",
+					"    const queryString = ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.url.query;",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
