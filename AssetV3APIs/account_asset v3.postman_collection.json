@@ -1,0 +1,1305 @@
+{
+	"info": {
+		"_postman_id": "ee96eaba-957f-4867-8872-e6c2c3f0b83e",
+		"name": "account_asset v3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11502513"
+	},
+	"item": [
+		{
+			"name": "Withdraw & Deposit",
+			"item": [
+				{
+					"name": "get deposit records",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/deposit/record/query?startTime=1659283200000&endTime=1660060800000&coin=USDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"deposit",
+								"record",
+								"query"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "1659283200000"
+								},
+								{
+									"key": "endTime",
+									"value": "1660060800000"
+								},
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "cursor",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get deposit address info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/deposit/address/query?coin=GMT&chainType=SOL",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"deposit",
+								"address",
+								"query"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "GMT"
+								},
+								{
+									"key": "chainType",
+									"value": "SOL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get allowed deposit list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/asset/v3/public/deposit/allowed-deposit-list/query?coin=BTC&chain=BTC",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"public",
+								"deposit",
+								"allowed-deposit-list",
+								"query"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC"
+								},
+								{
+									"key": "chain",
+									"value": "BTC"
+								},
+								{
+									"key": "cursor",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get withdraw records",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/withdraw/record/query?startTime=1659283200000&endTime=1660060800000&coin=USDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"withdraw",
+								"record",
+								"query"
+							],
+							"query": [
+								{
+									"key": "withdrawId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "1659283200000"
+								},
+								{
+									"key": "endTime",
+									"value": "1660060800000"
+								},
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "cursor",
+									"value": "eyJtaW5JRCI6NzMyOCwibWF4SUQiOjc1MjB9",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coin\": \"USDT\",\n    \"chain\": null,\n    \"address\": \"0x9ba58f56E420a00a23D3508Cf77fF268C8510A01\",\n    \"tag\": null,\n    \"amount\": \"20\",\n    \"timestamp\": 1660620515481\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/asset/v3/private/withdraw/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"withdraw",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel withdraw",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 7642\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/asset/v3/private/withdraw/cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"withdraw",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transfer",
+			"item": [
+				{
+					"name": "internal transfer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transferId\": \"42c0cfb0-6bca-c242-bc76-4e6df6cbcb06\",\n    \"coin\": \"USDC\",\n    \"amount\": \"130\",\n    \"fromAccountType\": \"UNIFIED\",\n    \"toAccountType\": \"SPOT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/inter-transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"inter-transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get internal transfer list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/inter-transfer/list/query?coin=USDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"inter-transfer",
+								"list",
+								"query"
+							],
+							"query": [
+								{
+									"key": "transferId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "1656604800000",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "1659196800000",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "cursor",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "master-sub member transfer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transferId\": \"2891a5ca-b44c-4cda-a21f-3df0a1f2516f\",\n    \"coin\": \"USDC\",\n    \"amount\": \"5\",\n    \"subMemberId\": 554117,\n    \"type\": \"OUT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/sub-member-transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"sub-member-transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save submemberId to universal transfer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subMemberIds\": [\"27207896\",\"27215785\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/transfer-sub-member-save",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"transfer-sub-member-save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get master-sub transfer list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/sub-member-transfer/list/query?coin=USDT&startTime=16540128000&endTime=16541856000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"sub-member-transfer",
+								"list",
+								"query"
+							],
+							"query": [
+								{
+									"key": "transferId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "16540128000"
+								},
+								{
+									"key": "endTime",
+									"value": "16541856000"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "cursor",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get enabled transfer coin list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/transfer-coin/list/query?fromAccountType=SPOT&toAccountType=CONTRACT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"transfer-coin",
+								"list",
+								"query"
+							],
+							"query": [
+								{
+									"key": "fromAccountType",
+									"value": "SPOT"
+								},
+								{
+									"key": "toAccountType",
+									"value": "CONTRACT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get submember id list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/sub-member/list/query",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"sub-member",
+								"list",
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "universal transfer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transferId\": \"4c64a2aa-b44c-4caa-a21f-3df0a1f2516f\",\n    \"coin\": \"BTC\",\n    \"amount\": \"0.1\",\n    \"fromMemberId\": 533285,\n    \"toMemberId\": 554117,\n    \"fromAccountType\": \"SPOT\",\n    \"toAccountType\": \"CONTRACT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/universal-transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"universal-transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get universal transfer list",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/universal-transfer/list/query?coin=BTC&status=SUCCESS&startTime=1660060800000&endTime=1661356800000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"universal-transfer",
+								"list",
+								"query"
+							],
+							"query": [
+								{
+									"key": "transferId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "coin",
+									"value": "BTC"
+								},
+								{
+									"key": "status",
+									"value": "SUCCESS"
+								},
+								{
+									"key": "startTime",
+									"value": "1660060800000"
+								},
+								{
+									"key": "endTime",
+									"value": "1661356800000"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "cursor",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get balance of specified coin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/account-coin/balance/query?memberId=533285&accountType=UNIFIED&coin=USDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"account-coin",
+								"balance",
+								"query"
+							],
+							"query": [
+								{
+									"key": "memberId",
+									"value": "533285"
+								},
+								{
+									"key": "accountType",
+									"value": "UNIFIED"
+								},
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "withBonus",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get asset info",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/asset/v3/private/transfer/asset-info/query",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"asset",
+								"v3",
+								"private",
+								"transfer",
+								"asset-info",
+								"query"
+							],
+							"query": [
+								{
+									"key": "accountType",
+									"value": "ACCOUNT_TYPE_SPOT",
+									"disabled": true
+								},
+								{
+									"key": "coin",
+									"value": "USDT",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const ts  = Date.now();",
+					"console.log(ts.toString)",
+					"",
+					"pm.environment.set(\"timestamp\", ts);",
+					"pm.environment.set(\"recvWindow\", 5000);",
+					"let paramsObject = {};",
+					"",
+					"const bybit_api_secret = pm.environment.get(\"bybit-api-secret\");",
+					"",
+					"if (pm.request.method == \"POST\") {",
+					"    var queryString = \"\"",
+					"    queryString=ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.body.raw;",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}",
+					"else{",
+					"    const queryString = ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.url.query;",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
