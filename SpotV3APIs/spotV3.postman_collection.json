@@ -1,0 +1,893 @@
+{
+	"info": {
+		"_postman_id": "4422fc39-658d-4ed0-9a5d-9b19a9d020b2",
+		"name": "spotV3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1254611"
+	},
+	"item": [
+		{
+			"name": "Market",
+			"item": [
+				{
+					"name": "Get all symbols",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/symbols",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"symbols"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Place order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"ETHUSDT\",\n    \"orderQty\":\"0.001\",\n    \"side\": \"Buy\",\n    \"orderType\": \"LIMIT\",\n    \"timeInForce\": \"GTC\",\n    \"orderPrice\": \"400\",\n    \"orderLinkId\": \"CJM00114\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/spot/v3/private/order",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get open order detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/order?orderId=1265869768378868224",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"order"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1265869768378868224"
+								},
+								{
+									"key": "orderLinkId",
+									"value": "spotA0010",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderId\": \"1265869768378868224\",\n    \"orderLinkId\": null\n}"
+						},
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cancel-order",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cancel-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Batch cancel orders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"BTCUSDT\",\n    \"side\": \"SELL\",\n    \"orderTypes\": \"LIMIT,LIMIT_MAKER\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cancel-orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cancel-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel by orderid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderIds\": \"1210851823244553984,1210852013162639104\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cancel-orders-by-ids",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cancel-orders-by-ids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get history orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/history-orders?symbol=BTCUSDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"history-orders"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "1663570208000",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "1667199008000",
+									"disabled": true
+								},
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my trades",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/my-trades?symbol=BTCUSDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"my-trades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "fromTradeId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "toTradeId",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Get wallet balance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Get server time",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/server-time",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"server-time"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Margin Trade",
+			"item": [
+				{
+					"name": "Borrow Cross Margin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coin\":\"USDT\",\n    \"qty\":\"50.2\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cross-margin-loan",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cross-margin-loan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repay Margin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coin\":\"USDT\",\n    \"qty\":\"120\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cross-margin-repay",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cross-margin-repay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Account Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cross-margin-account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cross-margin-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Borrowing Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cross-margin-orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cross-margin-orders"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1210856408331857665",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Interest and Quota",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cross-margin-loan-info?coin=DOGE",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cross-margin-loan-info"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "DOGE"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Repayment History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/cross-margin-repay-history?coin=USDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"cross-margin-repay-history"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "USDT"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const ts  = Date.now();",
+					"console.log(ts.toString)",
+					"",
+					"pm.environment.set(\"timestamp\", ts);",
+					"pm.environment.set(\"recvWindow\", 5000);",
+					"let paramsObject = {};",
+					"",
+					"const bybit_api_secret = pm.environment.get(\"bybit-api-secret\");",
+					"",
+					"if (pm.request.method == \"POST\") {",
+					"    var queryString = \"\"",
+					"    queryString=ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.body.raw;",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}",
+					"else{",
+					"    const queryString = ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.url.query;",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
