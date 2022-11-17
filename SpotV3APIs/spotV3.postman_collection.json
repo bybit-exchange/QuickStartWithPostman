@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "4422fc39-658d-4ed0-9a5d-9b19a9d020b2",
-		"name": "spotV3",
+		"name": "SpotV3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1254611"
 	},
@@ -24,6 +24,157 @@
 								"v3",
 								"public",
 								"symbols"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get orderBook",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/quote/depth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"quote",
+								"depth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get merged orderBook",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/quote/depth/merged",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"quote",
+								"depth",
+								"merged"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Public Trading Records",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/quote/depth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"quote",
+								"depth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Kline",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/quote/kline",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"quote",
+								"kline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Lateset Information For Symbol",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/quote/ticker/24hr",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"quote",
+								"ticker",
+								"24hr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Last Traded Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/quote/ticker/price",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"quote",
+								"ticker",
+								"price"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Best Bid Ask",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/spot/v3/public/quote/ticker/bookTicker",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"public",
+								"quote",
+								"ticker",
+								"bookTicker"
 							]
 						}
 					},
@@ -90,7 +241,7 @@
 					"response": []
 				},
 				{
-					"name": "Get open order detail",
+					"name": "Get active orders",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -292,6 +443,65 @@
 								"v3",
 								"private",
 								"cancel-orders-by-ids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get open orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-API-KEY",
+								"value": "{{bybit-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-RECV-WINDOW",
+								"value": "{{recvWindow}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BAPI-SIGN",
+								"value": "{{signature}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/spot/v3/private/open-orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"spot",
+								"v3",
+								"private",
+								"open-orders"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "1265869768378868224",
+									"disabled": true
+								},
+								{
+									"key": "orderLinkId",
+									"value": "spotA0010",
+									"disabled": true
+								}
 							]
 						}
 					},
