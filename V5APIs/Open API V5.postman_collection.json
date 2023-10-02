@@ -8,6 +8,26 @@
 	},
 	"item": [
 		{
+			"name": "server-time",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v5/market/time",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v5",
+						"market",
+						"time"
+					],
+					"query": []
+				}
+			},
+			"response": []
+		},		
+		{
 			"name": "market",
 			"item": [
 				{
@@ -1291,6 +1311,43 @@
 									"key": "direction",
 									"value": "prev",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account-ratio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v5/market/account-ratio?category=linear&symbol=BTCUSDT&period=1h&limit=50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v5",
+								"market",
+								"account-ratio"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "linear"
+								},
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "period",
+									"value": "1h"
+								},
+								{
+									"key": "limit",
+									"value": "50"
 								}
 							]
 						}
