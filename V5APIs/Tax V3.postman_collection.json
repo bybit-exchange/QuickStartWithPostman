@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "c9734096-8839-45b5-a5a9-6ddc30dea2a4",
+		"name": "Tax V3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25704187"
+	},
+	"item": [
+		{
+			"name": "Get User Register Date",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-API-KEY",
+						"value": "{{bybit-api-key}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-TIMESTAMP",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-RECV-WINDOW",
+						"value": "{{recvWindow}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/fht/compliance/tax/v3/private/registertime",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"fht",
+						"compliance",
+						"tax",
+						"v3",
+						"private",
+						"registertime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request Export Report",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-API-KEY",
+						"value": "{{bybit-api-key}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-TIMESTAMP",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-RECV-WINDOW",
+						"value": "{{recvWindow}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"TRADE\",\r\n    \"number\":\"2\",\r\n    \"startTime\": \"1718143200\",\r\n    \"endTime\": \"1718283600\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/fht/compliance/tax/v3/private/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"fht",
+						"compliance",
+						"tax",
+						"v3",
+						"private",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Export Report Status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-API-KEY",
+						"value": "{{bybit-api-key}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-TIMESTAMP",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-RECV-WINDOW",
+						"value": "{{recvWindow}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"queryId\": \"12312312415325325\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/fht/compliance/tax/v3/private/status",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"fht",
+						"compliance",
+						"tax",
+						"v3",
+						"private",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Data Export",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-API-KEY",
+						"value": "{{bybit-api-key}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-TIMESTAMP",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-RECV-WINDOW",
+						"value": "{{recvWindow}}",
+						"type": "text"
+					},
+					{
+						"key": "X-BAPI-SIGN",
+						"value": "{{signature}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"queryId\": \"12312312415325325\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/fht/compliance/tax/v3/private/url",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"fht",
+						"compliance",
+						"tax",
+						"v3",
+						"private",
+						"url"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const ts  = Date.now();\r",
+					"console.log(ts.toString)\r",
+					"\r",
+					"pm.environment.set(\"timestamp\", ts);\r",
+					"pm.environment.set(\"recvWindow\", 5000);\r",
+					"let paramsObject = {};\r",
+					"\r",
+					"const bybit_api_secret = pm.environment.get(\"bybit-api-secret\");\r",
+					"\r",
+					"if (pm.request.method == \"POST\") {\r",
+					"    var queryString = \"\"\r",
+					"    queryString=ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.body.raw;\r",
+					"    console.log(queryString);\r",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();\r",
+					"    pm.environment.set(\"signature\", signature);\r",
+					"}\r",
+					"else{\r",
+					"    const queryString = ts.toString()+pm.environment.get(\"bybit-api-key\")+pm.environment.get(\"recvWindow\").toString()+pm.request.url.query;\r",
+					"    console.log(queryString);\r",
+					"    const signature = CryptoJS.HmacSHA256(queryString, bybit_api_secret).toString();\r",
+					"    pm.environment.set(\"signature\", signature);\r",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
